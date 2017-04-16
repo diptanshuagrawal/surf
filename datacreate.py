@@ -13,19 +13,20 @@ def update(id, name):
                 isExistId = 1
         if isExistId==1:
                 sample=row[5]
-                cmd = "UPDATE People SET Name=" + str(name) +", Age="+age+", Criminal_Records="+str(cr)+", Sample="+str(row[5]+1)+" WHERE Id="+str(id)
+                cmd = "UPDATE People SET Name=" + str(name) +", Age="+age+", Gender="+str(gender)+", Criminal_Records="+str(cr)+", Sample="+str(row[5]+1)+" WHERE Id="+str(id)
         else:
-                cmd = "INSERT INTO People(ID,Name,Age,Criminal_Records,Sample) VALUES(" + str(id) +"," + str(name)+","+age+","+str(cr)+", 1)"
+                cmd = "INSERT INTO People(ID,Name,Age,,Gender,Criminal_Records,Sample) VALUES(" + str(id) +"," + str(name)+","+age+","+str(gender)+","+str(cr)+", 1)"
                 sample=0
         conn.execute(cmd)
         conn.commit()
         conn.close()
         return sample
         
-id=raw_input('enter user id')
-name=raw_input('enter username')
-age=raw_input('enter age')
-cr=raw_input('enter criminal record if any')
+id=raw_input('enter user id ')
+name=raw_input('enter username ')
+age=raw_input('enter age ')
+gender=raw_input('enter gender ')
+cr=raw_input('enter criminal record if any ')
 sample = update(id, name)
 sampleNum=sample*60
 
